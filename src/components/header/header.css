@@ -12,6 +12,11 @@
     margin: 20px 0px 100px 0px;
 }
 
+.headerContainer.listMode{
+    margin: 20px 0px 0px 0px;
+
+}
+
 .headerList {
     display: flex;
     gap: 40px;
@@ -81,6 +86,7 @@
 .date {
     position: absolute;
     top: 40px;
+    z-index: 2;
 }
 
 .options {
@@ -91,6 +97,7 @@
     border-radius: 5px;
     -webkit-box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.41);
     box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.41);
+    z-index: 2;
 }
 
 .optionItem {
