@@ -2,7 +2,8 @@ import Featured from '../../components/featured/Featured'
 import Header from '../../components/header/Header'
 import Navbar from '../../components/navbar/Navbar'
 import PropertyList from '../../components/propertyList/PropertyList'
-import FeaturedProperties from '../../components/propertyList/FeaturedProperties'
+import FeaturedProperties from '../../components/featuredProperties/featuredProperties'
+
 import './home.css'
 
 const Home = () => {
