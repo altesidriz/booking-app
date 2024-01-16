@@ -13,7 +13,7 @@ dotenv.config();
 
 const connect = async () => {
     try {
-        await mongoose.connect(process.env.MONGO);
+        await mongoose.connect(process.env.MONGOBOOK);
         console.log('MongoDB conection is live!');
     } catch (error) {
         throw error
@@ -29,10 +29,13 @@ mongoose.connection.on("connected", ()=>{
 })
 
 //middlewares
-app.use('/auth', authRoute);
-app.use('/users', usersRoute);
-app.use('/hotels', hotelsRoute);
-app.use('/rooms', roomsRoute);
+
+app.use(express.json())
+
+app.use('/api/auth', authRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/hotels', hotelsRoute);
+app.use('/api/rooms', roomsRoute);
 
 app.listen(8800, () => {
     connect();
