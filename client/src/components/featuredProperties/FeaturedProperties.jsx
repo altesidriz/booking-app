@@ -1,45 +1,37 @@
+import useFetch from '../../hooks/useFetch';
 import './featuredProperties.css'
 
 const FeaturedProperties = () => {
+  const { data, error, loading } = useFetch("http://localhost:8800/api/hotels?featured=true");
+
+  const ratingCalculator = (rating) =>{
+    if(rating == 6 || rating >= 5.1) {
+      return "Excellent"
+    }else if(rating == 5 || rating >= 4.1){
+      return "Very Good"
+    }else if (rating == 4 || rating >= 0){
+      return "Good"
+    }else{
+      return "No rating"
+    }
+  }
+
   return (
     <div className="fp">
-      <div className='fpItem'>
-        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/483625731.jpg?k=c21c4ed9f421eb8092e5c870fecd06a628bfd77ff7fefdf30292d3345c801383&o=&hp=1" alt="" className="fpImg" />
-        <span className="fpName">Apart Hotel Sofia</span>
-        <span className="fpCity">Sofia</span>
-        <span className="fpPrice">Starting from $80</span>
-        <div className="fpRating">
-          <button>8.9</button>
-          <span>Excellent</span>
-        </div>
-      </div><div className='fpItem'>
-        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/483625731.jpg?k=c21c4ed9f421eb8092e5c870fecd06a628bfd77ff7fefdf30292d3345c801383&o=&hp=1" alt="" className="fpImg" />
-        <span className="fpName">Apart Hotel Sofia</span>
-        <span className="fpCity">Sofia</span>
-        <span className="fpPrice">Starting from $80</span>
-        <div className="fpRating">
-          <button>8.9</button>
-          <span>Excellent</span>
-        </div>
-      </div><div className='fpItem'>
-        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/483625731.jpg?k=c21c4ed9f421eb8092e5c870fecd06a628bfd77ff7fefdf30292d3345c801383&o=&hp=1" alt="" className="fpImg" />
-        <span className="fpName">Apart Hotel Sofia</span>
-        <span className="fpCity">Sofia</span>
-        <span className="fpPrice">Starting from $80</span>
-        <div className="fpRating">
-          <button>8.9</button>
-          <span>Excellent</span>
-        </div>
-      </div><div className='fpItem'>
-        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/483625731.jpg?k=c21c4ed9f421eb8092e5c870fecd06a628bfd77ff7fefdf30292d3345c801383&o=&hp=1" alt="" className="fpImg" />
-        <span className="fpName">Apart Hotel Sofia</span>
-        <span className="fpCity">Sofia</span>
-        <span className="fpPrice">Starting from $80</span>
-        <div className="fpRating">
-          <button>8.9</button>
-          <span>Excellent</span>
-        </div>
-      </div>
+      {loading ? "Loading please wait" : <>
+        {data.map(item => (
+          <div className='fpItem' key={item._id}>
+            <img src={item.photos[0]} alt="" className="fpImg" />
+            <span className="fpName">{item.name}</span>
+            <span className="fpCity">{item.city}</span>
+            <span className="fpPrice">{item.cheapesPrice}</span>
+           {item.rating && <div className="fpRating">
+              <button>{item.rating}</button>
+              <span>{ratingCalculator(item.rating)}</span>
+            </div>}
+          </div>
+        ))}
+      </>}
     </div>
   )
 }
