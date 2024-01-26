@@ -2,7 +2,7 @@ import useFetch from '../../hooks/useFetch';
 import './featuredProperties.css'
 
 const FeaturedProperties = () => {
-  const { data, error, loading } = useFetch("http://localhost:8800/api/hotels?featured=true");
+  const { data, error, loading } = useFetch("/api/hotels?featured=true");
 
   const ratingCalculator = (rating) =>{
     if(rating == 6 || rating >= 5.1) {
