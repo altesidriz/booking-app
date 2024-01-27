@@ -2,11 +2,11 @@ import useFetch from '../../hooks/useFetch'
 import './featured.css'
 
 const Featured = () => {
-    const { data, error, loading } = useFetch("http://localhost:8800/api/hotels/countByCity?cities=Plovdiv,Sofia,Arbanasi");
+    const { data, error, loading } = useFetch("/api/hotels/countByCity?cities=Plovdiv,Sofia,Arbanasi");
 
     return (
         <div className='featured'>
-            {loading ? "Loading please wait": <>
+            {loading ? ("Loading please wait"): (<>
                 <div className="featuredItem">
                     <img src="https://fnst.axflare.com/community/WEBP/oyLcYvyrCp.webp" alt="" className='featuredImg' />
                     <div className="featuredTitles">
@@ -28,7 +28,7 @@ const Featured = () => {
                         <h2>{data[2]} properties</h2>
                     </div>
                 </div>
-            </>}
+            </>)}
         </div>
     )
 }

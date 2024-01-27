@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import './searchItem.css'
 
 const SearchItem = ({ item }) => {
+
   return (
     <div className='searchItem'>
       <img src={item.photos[0]}
@@ -25,7 +26,7 @@ const SearchItem = ({ item }) => {
         <div className="siDetailTexts">
           <span className="siPrice">{item.cheapestPrice} BGN</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <Link to={`/api/hotels/${item._id}`}>
+          <Link to={`/hotels/${item._id}`}>
             <button>See availability</button>
           </Link>
         </div>
