@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './header.css'
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
@@ -7,6 +7,7 @@ import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortaw
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../context/SearchContext';
 
 const Header = ({ type }) => {
     const [destination, setDestination] = useState('');
@@ -30,11 +31,14 @@ const Header = ({ type }) => {
         setOptions(prev => {
             return {
                 ...prev, [name]: operation === "inc" ? options[name] + 1 : options[name] - 1,
-            }
-        })
-    }
+            };
+        });
+    };
+
+    const { dispatch } = useContext(SearchContext);
 
     const handleSearch = () => {
+        dispatch({ type: "NEW_SEARCH", payload: { destination, date, options } });
         navigate('/hotels', {state:{destination, date, options}})
     }
     return (

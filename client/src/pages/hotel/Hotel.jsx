@@ -13,12 +13,14 @@ const Hotel = () => {
 
   const location = useLocation();
   console.log(location);
-  const id = location.pathname.split('/')[2]
+  const id = location.pathname.split('/')[2];
   console.log(id);
   const [slideNumber, setSlideNumber] = useState(0);
   const [openSlide, setOpenSlide] = useState(false);
 
   const { data, loading, error } = useFetch(`/api/hotels/find/${id}`);
+
+  
 
   // const photos = [
   //   'https://cf.bstatic.com/xdata/images/hotel/max1024x768/483342748.jpg?k=1935ea12b1893f0278e6727afe235df5410624c1114108da52f8939de4363a27&o=&hp=1',
