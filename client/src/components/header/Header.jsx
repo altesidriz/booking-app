@@ -8,6 +8,7 @@ import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = ({ type }) => {
     const [destination, setDestination] = useState('');
@@ -26,6 +27,7 @@ const Header = ({ type }) => {
         room: 1
     })
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
 
     const handleOption = (name, operation) => {
         setOptions(prev => {
@@ -74,7 +76,7 @@ const Header = ({ type }) => {
                 <>
                     <h1 className="headerTittle">Vacation rentals all over the world</h1>
                     <p className="headerDesc">Cabins, houses,apartments and more!</p>
-                    <button className="headerBtn">Sign up</button>
+                    {!user && <button className="headerBtn">Sign up</button>}
                     <div className="headerSearch">
                         <div className="headerSearchItem">
                             <FontAwesomeIcon icon={faBed} className="headerIcon" />
