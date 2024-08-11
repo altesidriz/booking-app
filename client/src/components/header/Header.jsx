@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react'
-import './header.css'
+import { useContext, useState } from 'react';
+import './header.css';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +32,7 @@ const Header = ({ type }) => {
     const handleOption = (name, operation) => {
         setOptions(prev => {
             return {
-                ...prev, [name]: operation === "inc" ? options[name] + 1 : options[name] - 1,
+                ...prev, [name]: operation === 'inc' ? options[name] + 1 : options[name] - 1,
             };
         });
     };
@@ -41,8 +41,8 @@ const Header = ({ type }) => {
 
     const handleSearch = () => {
         dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
-        navigate('/hotels', {state:{destination, dates, options}})
-    }
+        navigate('/hotels', {state:{destination, dates, options}});
+    };
     return (
         <div className='header'>
             <div className={type ==="list" ? "headerContainer listMode" : "headerContainer"}>

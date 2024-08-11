@@ -1,12 +1,12 @@
-import Featured from '../../components/featured/Featured'
-import Header from '../../components/header/Header'
-import Navbar from '../../components/navbar/Navbar'
-import PropertyList from '../../components/propertyList/PropertyList'
-import FeaturedProperties from '../../components/featuredProperties/FeaturedProperties'
+import Featured from '../../components/featured/Featured';
+import Header from '../../components/header/Header';
+import Navbar from '../../components/navbar/Navbar';
+import PropertyList from '../../components/propertyList/PropertyList';
+import FeaturedProperties from '../../components/featuredProperties/FeaturedProperties';
 
-import './home.css'
-import MailList from '../../components/mailList/MailList'
-import Footer from '../../components/footer/Footer'
+import './home.css';
+import MailList from '../../components/mailList/MailList';
+import Footer from '../../components/footer/Footer';
 
 const Home = () => {
   return (
@@ -23,7 +23,7 @@ const Home = () => {
         <Footer />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
