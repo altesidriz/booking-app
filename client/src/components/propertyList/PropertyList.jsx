@@ -11,7 +11,7 @@ const PropertyList = () => {
     console.log(data);
 
     const images = [
-        "https://atlashotel.bg/images/296b17b911bb6d31ce6b830b74ec8099e78ec378.jpg",
+        "https://www.bulgariaholidays.net/uploads/offers/hoteli-slanchev-bryag-10_1576929.jpg",
         "https://www.apartments.com/blog/sites/default/files/styles/x_large_hq/public/image/2023-06/ParkLine-apartment-in-Miami-FL.jpg?itok=kQmw64UU",
         "https://images.micazu.nl/_images/house/43407/images/villa_surga-1-3547.jpeg?&width=1600&height=1200&mode=crop"
     ]
