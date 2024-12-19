@@ -10,11 +10,6 @@ const Login = () => {
     password: undefined,
   });
 
-  const axiosInst = axios.create({
-    baseURL: process.env.REATC_APP_API_URL,
-})
-
-
   const { loading, error, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate()
@@ -27,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axiosInst.post("/api/auth/login", credentials);
+      const res = await axios.post("/api/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       console.log(res.data.details);
       navigate("/")

@@ -1,14 +1,13 @@
-import { useContext, useState } from 'react';
-import './header.css';
+import { useContext, useState } from 'react'
+import './header.css'
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons'
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
-import { AuthContext } from '../../context/AuthContext';
 
 const Header = ({ type }) => {
     const [destination, setDestination] = useState('');
@@ -27,12 +26,11 @@ const Header = ({ type }) => {
         room: 1
     })
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
 
     const handleOption = (name, operation) => {
         setOptions(prev => {
             return {
-                ...prev, [name]: operation === 'inc' ? options[name] + 1 : options[name] - 1,
+                ...prev, [name]: operation === "inc" ? options[name] + 1 : options[name] - 1,
             };
         });
     };
@@ -41,8 +39,8 @@ const Header = ({ type }) => {
 
     const handleSearch = () => {
         dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
-        navigate('/hotels', {state:{destination, dates, options}});
-    };
+        navigate('/hotels', {state:{destination, dates, options}})
+    }
     return (
         <div className='header'>
             <div className={type ==="list" ? "headerContainer listMode" : "headerContainer"}>
@@ -76,7 +74,7 @@ const Header = ({ type }) => {
                 <>
                     <h1 className="headerTittle">Vacation rentals all over the world</h1>
                     <p className="headerDesc">Cabins, houses,apartments and more!</p>
-                    {!user && <button className="headerBtn">Sign up</button>}
+                    <button className="headerBtn">Sign up</button>
                     <div className="headerSearch">
                         <div className="headerSearchItem">
                             <FontAwesomeIcon icon={faBed} className="headerIcon" />

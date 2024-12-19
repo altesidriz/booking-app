@@ -5,14 +5,11 @@ const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const axiosInst = axios.create({
-        baseURL: process.env.REATC_APP_API_URL,
-    })
 
     const reFetch = async () => {
         setLoading(true);
         try {
-            const res = await axiosInst.get(url)
+            const res = await axios.get(url)
             setData(res.data)
         } catch (err) {
             setError(true)
