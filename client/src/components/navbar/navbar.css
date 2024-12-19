@@ -23,5 +23,9 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+.navButton a {
+    text-decoration: none;
     color: #003580;
 }
