@@ -2,7 +2,7 @@ import useFetch from '../../hooks/useFetch'
 import './featured.css'
 
 const Featured = () => {
-    const { data, error, loading } = useFetch("/api/hotels/countByCity?cities=Plovdiv,Sofia,Arbanasi");
+    const { data, error, loading } = useFetch("/api/hotels/countByCity?cities=New York,Plovdiv,Sydney");
 
     return (
         <div className='featured'>
@@ -10,7 +10,7 @@ const Featured = () => {
                 <div className="featuredItem">
                     <img src="https://fnst.axflare.com/community/WEBP/oyLcYvyrCp.webp" alt="" className='featuredImg' />
                     <div className="featuredTitles">
-                        <h1>Dubai</h1>
+                        <h1>New York</h1>
                         <h2>{data[0]} properties</h2>
                     </div>
                 </div>

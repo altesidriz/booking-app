@@ -7,19 +7,25 @@ import FeaturedProperties from '../../components/featuredProperties/FeaturedProp
 import './home.css'
 import MailList from '../../components/mailList/MailList'
 import Footer from '../../components/footer/Footer'
+import Promotion from '../../components/promotion/Promotion'
+import { AuthContext } from '../../context/AuthContext'
+import { useContext } from 'react'
 
 const Home = () => {
+    const { user } = useContext(AuthContext);
+  
   return (
     <div>
       <Navbar />
       <Header />
       <div className="homeContainer">
+        {user ? null : <Promotion/>}
+        <MailList />
         <Featured/>
         <h1 className="homeTitle">Browse by property type</h1>
         <PropertyList />
-        <h1 className="homeTitle">Homes guests love</h1>
+        <h1 className="homeTitle">Top Destinations</h1>
         <FeaturedProperties/>
-        <MailList />
         <Footer />
       </div>
     </div>

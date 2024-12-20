@@ -1,31 +1,37 @@
 .mail {
-    width: 100%;
+    width: 95%;
+    height: 200px;
     margin-top: 50px;
-    background-color: #003580;
+    background-color: #e61e43;
     color: white;
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 20px;
     padding: 20px;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-.mailInputContainer>input {
-    width: 300px;
-    height: 30px;
-    padding: 20px;
-    border: none;
-    margin-right: 10px;
-    border-radius: 5px;
+.mail h1{
+    flex: 1
 }
 
-.mailInputContainer>button {
-    width:  80px;
-    height: 40px;
-    background-color: #0071c2;
-    color: white;
-    font-weight: 500;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.box{
+    padding: 0 10px;
+    background-color: #a1122c;
+    height: 100px;
+    width: 250px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-items: space-between;
+    column-gap: 15px;
+    border-radius: 15px;
+}
+
+.box span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

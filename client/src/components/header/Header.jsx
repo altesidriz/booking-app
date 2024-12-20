@@ -72,9 +72,7 @@ const Header = ({ type }) => {
                 </div>
                 {type !=="list" && 
                 <>
-                    <h1 className="headerTittle">Vacation rentals all over the world</h1>
-                    <p className="headerDesc">Cabins, houses,apartments and more!</p>
-                    <button className="headerBtn">Sign up</button>
+                    <h1 className="headerTittle">Where to?</h1>
                     <div className="headerSearch">
                         <div className="headerSearchItem">
                             <FontAwesomeIcon icon={faBed} className="headerIcon" />

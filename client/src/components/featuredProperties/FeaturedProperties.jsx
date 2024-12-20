@@ -24,9 +24,9 @@ const FeaturedProperties = () => {
             <img src={item.photos[0]} alt="" className="fpImg" />
             <span className="fpName">{item.name}</span>
             <span className="fpCity">{item.city}</span>
-            <span className="fpPrice">{item.cheapesPrice}</span>
+            <span className="fpPrice">from {item.cheapestPrice}BGN for a night</span>
            {item.rating && <div className="fpRating">
-              <button>{item.rating}</button>
+              <button>{item.rating.toFixed(1)}</button>
               <span>{ratingCalculator(item.rating)}</span>
             </div>}
           </div>

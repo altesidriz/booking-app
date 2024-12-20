@@ -1,0 +1,35 @@
+.promoContainer{
+    height: 70px;
+    width: 80%;
+    background: #191e3b;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.leftCont{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    column-gap: 10px;
+    color: #ffffff;
+}
+
+.leftCont span{
+    width: 50px;
+    height: 50px;
+    background: #d2a800;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    background-color: #1668e3;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+}

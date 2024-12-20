@@ -1,22 +1,68 @@
 .pList {
     width: 100%;
+    height: 200px;
     max-width: 1024px;
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: relative;
+}
+
+.left,
+.right {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    background: #cccccc;
+    font-size: 1.5rem;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.pList::-webkit-scrollbar {
+    display: none
+}
+
+.items {
+    overflow: hidden;
+    display: flex;
+    column-gap: 15px;
+    width: 90%;
 }
 
 .pListItem {
-    flex: 1;
-    border-radius: 10px;
     overflow: hidden;
+    border-radius: 10px;
+    width: 250px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .pListImg {
     width: 100%;
     height: 150px;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.pListImg:hover{
+    transform: scale(0.8);
+    opacity: 0.7;
 }
 
 .pListTitles>h1 {
