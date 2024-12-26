@@ -24,16 +24,17 @@ const Login = () => {
     try {
       const res = await axios.post("/api/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      console.log(res.data.details);
+      // console.log(res.data.details);
       navigate("/")
     } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data || "Something went wrong"});
     }
   };
 
   return (
     <div className="login">
       <div className="lContainer">
+        {error && <span style={{color:'red'}}>{error.message}</span>}
         <input
           type="text"
           placeholder="username"
@@ -51,7 +52,6 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
-        {error && <span>{error.message}</span>}
       </div>
     </div>
   );

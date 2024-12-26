@@ -6,16 +6,17 @@ import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } f
 import Footer from '../../components/footer/Footer'
 import MailList from '../../components/mailList/MailList'
 import { useContext, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import { SearchContext } from '../../context/SearchContext'
 
 const Hotel = () => {
 
+  const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const id = location.pathname.split('/')[2];
-  console.log(id);
+  // console.log(id);
   const [slideNumber, setSlideNumber] = useState(0);
   const [openSlide, setOpenSlide] = useState(false);
 
@@ -23,6 +24,7 @@ const Hotel = () => {
 
   const { dates, options } = useContext(SearchContext);
 
+  
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
@@ -30,7 +32,10 @@ const Hotel = () => {
     return diffDays;
   };
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dayDifference(dates[0].endDate, dates[0].startDate)
+      
+
+  // const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
 
   const handleOpenSlide = (index) => {
@@ -39,13 +44,19 @@ const Hotel = () => {
   }
 
   const handleMove = (direction, presentSlide) => {
+    const totalSlides = data.images.length;
 
     if (direction === 'l') {
-      presentSlide = presentSlide === 0 ? 5 : presentSlide - 1;
+      presentSlide = presentSlide === 0 ? totalSlides-1 : presentSlide - 1;
     } else {
-      presentSlide = presentSlide === 5 ? 0 : presentSlide + 1;
+      presentSlide = presentSlide === totalSlides - 1 ? 0 : presentSlide + 1;
     }
     setSlideNumber(presentSlide);
+  };
+
+
+  const handleBookNow = () => {
+    navigate(`/rooms/${data._id}`);
   };
 
   return (
@@ -59,7 +70,7 @@ const Hotel = () => {
             <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={() => setOpenSlide(false)} />
             <FontAwesomeIcon icon={faCircleArrowLeft} className='arrow' onClick={() => handleMove('l', slideNumber)} />
             <div className="sliderWrapper">
-              <img src={data.photos[slideNumber]} alt="" className="sliderImg" />
+              <img src={data.images[slideNumber]} alt="" className="sliderImg" />
             </div>
             <FontAwesomeIcon icon={faCircleArrowRight} className='arrow' onClick={() => handleMove('r', slideNumber)} />
           </div>}
@@ -70,29 +81,29 @@ const Hotel = () => {
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
             </div>
-            <span className="hotelDistance">Excellent location - {data.distance}m from center</span>
-            <span className="hotelPriceHighlight">Book a stay over {data.cheapestPrice}BGN at this property and get free airport taxi</span>
+            <span className="hotelDistance">{data.address}</span>
+            <span className="hotelPriceHighlight">Book a stay over {data.price}BGN at this property and get free airport taxi</span>
             <div className="hotelImages">
-              {data.photos?.map((photo, index) => (
+              {data.images?.map((image, index) => (
                 <div className="hotelImageWrapper" key={index}>
-                  <img onClick={() => handleOpenSlide(index)} src={photo} alt="" className="hotelImg" />
+                  <img onClick={() => handleOpenSlide(index)} src={image} alt="" className="hotelImg" />
                 </div>
               ))}
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsText">
-                <h1 className="hotelTitle">{data.title}</h1>
-                <p className="hotelDesc">{data.desc}</p>
+                <h1 className="hotelTitle">{data.name}</h1>
+                <p className="hotelDesc">{data.title}</p>
               </div>
               <div className="hotelDetailsPrice">
                 <h1>Perfect for beach holidays</h1>
                 <span>Located just in fron of the ocean!</span>
-                <h2> <b>{days * data.cheapestPrice * options.room} BGN</b> ({days} nights)</h2>
-                <button>Reserve or Book Now!</button>
+                <h2> <b>{days * data.price * options.room} BGN</b> ({days} nights)</h2>
+                <button onClick={handleBookNow}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
-          <MailList />
+          {/* <MailList /> */}
           <Footer />
         </div>)}
     </div>

@@ -23,9 +23,15 @@
     height: 60%;
 }
 
-.fpName {
+.fpName{
     font-weight: bold;
     padding-left: 10px;
+    color: #575757;
+    text-decoration: none;
+}
+
+.fpItem a{
+    text-decoration: none;
 }
 
 .fpCity {
@@ -53,4 +59,13 @@
 .fpRating>span{
     font-weight: bold;
     font-size: 14px;
+}
+
+.loadContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

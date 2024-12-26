@@ -1,28 +1,36 @@
 import mongoose from 'mongoose';
 
 const RoomSchema = new mongoose.Schema({
-    title: {
+    hotelId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hotel', // References the Hotel model
+        required: true
+    },
+    type: {
         type: String,
         required: true,
+        enum: ["single", "double", "triple", "apartment"]
     },
     price: {
         type: Number,
         required: true
     },
-    maxPeople: {
-        type: Number,
-        required: true
+    amenities: {
+        type: [String],
+        default: []
     },
-    desc: {
+    available: {
+        type: Boolean,
+        default: true
+    },
+    images: {
+        type: [String],
+        default: []
+    },
+    description: {
         type: String,
-        required: true
-    },
-    roomNumbers: {
-        type: [{number: Number, unavailableDates:{type:[Date]}}],
-        required: true
-    },
-},
-{timestamps: true}
-);
+        trim: true
+    }
+}, { timestamps: true });
 
 export default mongoose.model("Room", RoomSchema)

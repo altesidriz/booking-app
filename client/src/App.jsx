@@ -6,6 +6,7 @@ import Hotel from "./pages/hotel/Hotel";
 import NotFound from "./pages/notFound/NotFound";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import Rooms from "./pages/roomsList/Rooms";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/hotels" element={<List/>}/>
+      <Route path="/rooms/:hotelId" element={<Rooms/>}/>
       <Route path="/hotels/:id" element={<Hotel />}/>
       <Route path="/register" element={<Register />}/>
       <Route path="/login" element={<Login />}/>

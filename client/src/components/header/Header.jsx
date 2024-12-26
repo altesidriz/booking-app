@@ -41,6 +41,7 @@ const Header = ({ type }) => {
         dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
         navigate('/hotels', {state:{destination, dates, options}})
     }
+    
     return (
         <div className='header'>
             <div className={type ==="list" ? "headerContainer listMode" : "headerContainer"}>

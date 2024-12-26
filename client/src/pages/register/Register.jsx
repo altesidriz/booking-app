@@ -41,16 +41,17 @@ const Register = () => {
       const response = await axios.post("/api/auth/register", dataToSend);
       dispatch({ type: "REGISTER_SUCCESS", payload: response.data });
       console.log(response.data);
-
     } catch (error) {
       dispatch({ type: "REGISTER_FAILURE", payload: error.response.data });
+      return
     }
-    navigate('/login')
+    navigate('/login');
   };
 
   return (
     <div className="login">
       <div className="lContainer">
+      {error && <span style={{color:'red'}}>{error.message}</span>}
         <input
           type="text"
           placeholder="username"

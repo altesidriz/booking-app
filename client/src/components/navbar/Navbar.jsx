@@ -1,12 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
+  const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const { user } = useContext(AuthContext);
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    dispatch({ type: "LOGOUT" });
+    document.cookie = "access_token=; Max-Age=0; path=/; Secure; HttpOnly; SameSite=Strict;";
+    navigate('/')
+  };
+
   return (
     <div className='navbar'>
       <div className="navContainer">
@@ -22,7 +30,7 @@ const Navbar = () => {
             {menu && <div className='navMenu'>
                 <Link to='/create'>List your property</Link>
                 <Link to='/create'>My Bookings</Link>
-                <span to='javascript:void(0)'>Logout</span>
+                <span onClick={handleLogout}>Logout</span>
             </div>}
           </div>
         ) : (
