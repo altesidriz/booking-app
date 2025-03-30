@@ -9,13 +9,18 @@ const useFetch = (url) => {
     const reFetch = async () => {
         setLoading(true);
         try {
-            const res = await axiosInstance.get(url)
-            setData(res.data)
+            const res = await axiosInstance.get(url);
+            console.log(res.data); // Add this line
+            if (Array.isArray(res.data)) {
+                setData(res.data);
+            } else {
+                setData([]); // Or some default array
+                setError(true); // Or handle the error appropriately.
+                console.error("API response is not an array:", res.data);
+            }
         } catch (err) {
-            setError(true)
+            setError(true);
         }
-        setLoading(false)
-    };
 
     useEffect(() => {
         const fetchData = async () => {
