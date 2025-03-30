@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./register.css";
+import axiosInstance from "../../lib/axiosInstance";
 
 const Register = () => {
   const [passwordError, setPasswordError] = useState(null);
@@ -38,7 +38,7 @@ const Register = () => {
 
     dispatch({ type: "REGISTER_START" });
     try {
-      const response = await axios.post("/api/auth/register", dataToSend);
+      const response = await axiosInstance.post("/api/auth/register", dataToSend);
       dispatch({ type: "REGISTER_SUCCESS", payload: response.data });
       console.log(response.data);
     } catch (error) {

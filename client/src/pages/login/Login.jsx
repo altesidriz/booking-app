@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
+import axiosInstance from "../../lib/axiosInstance";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/api/auth/login", credentials);
+      const res = await axiosInstance.post("/api/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       // console.log(res.data.details);
       navigate("/")
