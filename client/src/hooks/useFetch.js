@@ -21,6 +21,8 @@ const useFetch = (url) => {
         } catch (err) {
             setError(true);
         }
+        setLoading(false);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
