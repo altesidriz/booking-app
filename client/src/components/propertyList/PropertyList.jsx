@@ -5,7 +5,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Loader from '../loader/Loader';
 
 const PropertyList = () => {
-  const { data, error, loading } = useFetch("/api/hotels/countByType");
+  const { data, error, loading } = useFetch("/hotels/countByType");
   const containerRef = useRef();
   const [showScrollButtons, setShowScrollButtons] = useState(false);
 

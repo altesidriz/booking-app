@@ -4,7 +4,7 @@ import './featuredProperties.css';
 import Loader from '../loader/Loader';
 
 const FeaturedProperties = () => {
-    const { data, error, loading } = useFetch("/api/hotels?featured=true");
+    const { data, error, loading } = useFetch("/hotels?featured=true");
 
     const ratingCalculator = (rating) => {
         if (rating >= 5.1) {

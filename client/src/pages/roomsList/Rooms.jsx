@@ -8,7 +8,7 @@ import Footer from '../../components/footer/Footer';
 
 const Rooms = () => {
     const { hotelId } = useParams();
-    const { data, loading, error } = useFetch(`/api/rooms/${hotelId}`);
+    const { data, loading, error } = useFetch(`/rooms/${hotelId}`);
 
     return (
         <div>

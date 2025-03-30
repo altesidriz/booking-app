@@ -38,7 +38,7 @@ const Register = () => {
 
     dispatch({ type: "REGISTER_START" });
     try {
-      const response = await axiosInstance.post("/api/auth/register", dataToSend);
+      const response = await axiosInstance.post("/auth/register", dataToSend);
       dispatch({ type: "REGISTER_SUCCESS", payload: response.data });
       console.log(response.data);
     } catch (error) {

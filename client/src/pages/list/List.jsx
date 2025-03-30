@@ -21,7 +21,7 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  const { data, loading, error, reFetch } = useFetch(`/api/hotels/cities?city=${destination}&min=${min || 1}&max=${max || 9999}`);
+  const { data, loading, error, reFetch } = useFetch(`/hotels/cities?city=${destination}&min=${min || 1}&max=${max || 9999}`);
 
   const handleClick = () => {
     
